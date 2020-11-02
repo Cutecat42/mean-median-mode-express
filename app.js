@@ -14,8 +14,8 @@ app.get('/mean', function(req, res, next) {
             avg += Number(nums[i]);
         }
 
-        if (isNaN(avg/nums.length)) throw new ExpressError("Nums must be all numbers", 404);
-        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 404);
+        if (isNaN(avg/nums.length)) throw new ExpressError("Nums must be all numbers", 400);
+        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 400);
 
         return res.json({response: {
             operation: "mean",
@@ -45,9 +45,9 @@ app.get('/median', function(req, res, next) {
         }
 
         for (i = 0; i < nums.length; i++) {
-            if (isNaN(Number(nums[i]))) throw new ExpressError("Nums must be all numbers", 404);   
+            if (isNaN(Number(nums[i]))) throw new ExpressError("Nums must be all numbers", 400);   
         }
-        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 404);
+        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 400);
 
         return res.json({response: {
             operation: "median",
@@ -67,8 +67,8 @@ app.get('/mode', function(req, res, next) {
             - nums.filter(v => v===b).length
             ).pop();
 
-        if (isNaN(mode)) throw new ExpressError("Nums must be all numbers", 404);      
-        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 404);
+        if (isNaN(mode)) throw new ExpressError("Nums must be all numbers", 400);      
+        if (req.query.nums.length < 1) throw new ExpressError("Nums are required", 400);
 
         return res.json({response: {
             operation: "mode",
